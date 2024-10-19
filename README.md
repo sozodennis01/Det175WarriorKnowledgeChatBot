@@ -31,7 +31,7 @@ DET175 Warrior Knowledge Quiz Chatbot is an interactive web-based chatbot design
 
 ## Demo
 
-![Chatbot Interaction](https://via.placeholder.com/800x400?text=Chatbot+Interaction+Demo)
+![Chatbot Interaction](https://github.com/sozodennis01/Det175WarriorKnowledgeChatBot/blob/main/Det175WKChatbotPhoto.jpg)
 
 *Note: Replace the placeholder images with actual screenshots or GIFs of your chatbot in action.*
 
