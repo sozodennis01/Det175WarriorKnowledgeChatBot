@@ -22,7 +22,6 @@ async function main() {
     app.use(bodyParser.json());
     //app.use(helmet()); helmet breaks things ignore it for now.
 
-
     // Serve static files from the 'public' directory
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
