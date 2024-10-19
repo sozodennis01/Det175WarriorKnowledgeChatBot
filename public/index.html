@@ -2,6 +2,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>DET175 Warrior Knowledge Quiz Chatbot</title>
@@ -155,22 +156,26 @@
         body.dark #input {
             background-color: var(--input-bg-dark);
             border-color: var(--border-color-dark);
-            color: var(--text-color-dark); /* Text color in dark mode */
+            color: var(--text-color-dark);
+            /* Text color in dark mode */
         }
 
         /* Scrollbar styling for Webkit-based browsers */
         #chat::-webkit-scrollbar {
             width: 8px;
         }
+
         #chat::-webkit-scrollbar-track {
             background: #f1f1f1;
         }
+
         #chat::-webkit-scrollbar-thumb {
             background: #ccc;
             border-radius: 4px;
         }
     </style>
 </head>
+
 <body>
     <div id="container">
         <button id="toggle-button">Switch Mode</button>
@@ -179,8 +184,12 @@
             <input type="text" id="input" placeholder="Type your answer here..." autocomplete="off" />
             <button id="send-button" disabled>Send</button>
         </div>
-        <div><p>Maintained by C/Sarsozo. Quiz yourself on LLAB 1-9. Auto-generates a question on startup. Respond back what LLAB you want to quiz yourself on.
-            Insignias and aircraft photos cannot be tested - study those yourself. Any questions or concerns let me know 🤙🏽</p></div>
+        <div>
+            <p>Maintained by C/Sarsozo. Quiz yourself on LLAB 1-9. Auto-generates a question on startup. Respond back
+                what LLAB you want to quiz yourself on.
+                Insignias and aircraft photos cannot be tested - study those yourself. Any questions or concerns let me
+                know 🤙🏽</p>
+        </div>
     </div>
     <script>
         const input = document.getElementById('input');
@@ -208,7 +217,7 @@
         toggleButton.addEventListener('click', toggleMode);
 
         // Enable send button when input is not empty
-        input.addEventListener('input', function() {
+        input.addEventListener('input', function () {
             sendButton.disabled = input.value.trim() === '';
         });
 
@@ -216,7 +225,7 @@
         sendButton.addEventListener('click', sendMessage);
 
         // Send message on Enter key press
-        input.addEventListener('keypress', function(event) {
+        input.addEventListener('keypress', function (event) {
             if (event.key === 'Enter' && !event.shiftKey && input.value.trim() !== '') {
                 event.preventDefault();
                 sendMessage();
@@ -230,43 +239,89 @@
             sendButton.disabled = true;
             appendMessage('user', message);
 
+            // Append a temporary assistant message with '...'
+            const loadingMessageId = 'loading-message';
+            appendMessage('assistant', '...', loadingMessageId);
+
             fetch('/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: message})
+                body: JSON.stringify({ message: message })
             })
-            .then(response => response.json())
-            .then(data => {
-                appendMessage('assistant', data.message);
-                sendButton.disabled = false;
-            })
-            .catch(error => {
-                console.error('Error client side sending message:', error);
-                sendButton.disabled = false;
-            });
+                .then(response => response.json())
+                .then(data => {
+                    // Replace the '...' message with the actual assistant message
+                    const loadingElement = document.getElementById(loadingMessageId);
+                    if (loadingElement) {
+                        loadingElement.textContent = data.message;
+                        loadingElement.id = null;
+                    } else {
+                        // Fallback in case the loading message was not found
+                        appendMessage('assistant', data.message);
+                    }
+                    sendButton.disabled = false;
+                })
+                .catch(error => {
+                    console.error('Error client side sending message:', error);
+                    // Replace the '...' message with an error message
+                    const loadingElement = document.getElementById(loadingMessageId);
+                    if (loadingElement) {
+                        loadingElement.textContent = 'Error client side sending message:' + error.message;
+                        loadingElement.id = null;
+                    } else {
+                        appendMessage('assistant', 'Sorry, something went wrong sending the client message. Please try again.');
+                    }
+                    sendButton.disabled = false;
+                });
         }
 
-        function appendMessage(role, message) {
+        function appendMessage(role, message, id = null) {
             const messageElement = document.createElement('div');
             messageElement.className = 'message ' + role;
             messageElement.textContent = message;
+            if (id) {
+                messageElement.id = id; // Assign an ID if provided to remove loading mask
+            }
             chat.appendChild(messageElement);
             chat.scrollTop = chat.scrollHeight;
         }
+
+        // Append a temporary assistant message with '...'
+        const loadingMessageId = 'loading-message';
+        appendMessage('assistant', '...', loadingMessageId);
 
         // Start the conversation
         fetch('/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: ''})
+            body: JSON.stringify({ message: '' })
         })
-        .then(response => response.json())
-        .then(data => {
-            appendMessage('assistant', data.message);
-        })
-        .catch(error => {
-            console.error('Error starting conversation client side:', error);
-        });
+            .then(response => response.json())
+            .then(data => {
+                // Replace the '...' message with the actual assistant message
+                const loadingElement = document.getElementById(loadingMessageId);
+                if (loadingElement) {
+                    loadingElement.textContent = data.message;
+                    loadingElement.id = null;
+                } else {
+                    // Fallback in case the loading message was not found
+                    appendMessage('assistant', data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Error starting conversation client side:', error);
+                // Replace the '...' message with an error message
+                const loadingElement = document.getElementById(loadingMessageId);
+                if (loadingElement) {
+                    loadingElement.textContent = 'Error starting conversation client side:' + error.message;
+                    loadingElement.id = null;
+                } else {
+                    appendMessage('assistant', 'Sorry, something went wrong while starting the conversation.');
+                }
+
+            });
     </script>
+
 </body>
+
 </html>
