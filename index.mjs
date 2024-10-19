@@ -24,7 +24,6 @@ async function main() {
     app.use(bodyParser.json());
     //app.use(helmet()); helmet breaks things ignore it for now.
 
-
     // Serve static files from the 'public' directory
     const __filename = fileURLToPath(import.meta.url);
     const __dirname = path.dirname(__filename);
@@ -39,7 +38,7 @@ async function main() {
 
     const limiter = rateLimit({
         windowMs: 1 * 60 * 1000, // 1 minute window
-        max: 60, // limit each IP to 60 requests per windowMs
+        max: 5, // limit each IP to 5 requests per 1 minute
     });
 
     app.post('/chat', limiter, async (req, res) => {
@@ -120,7 +119,7 @@ async function main() {
             res.json({ message: assistantMessage });
         } catch (error) {
             // Add error message so users can send pic to me?
-            const errorMessage = error.message;
+            const errorMessage = "SERVER ERROR: " + error.message;
             chatHistory.push({ role: 'assistant', content: errorMessage });
             res.json({ message: errorMessage });
             console.error('OpenAI API error:', error);

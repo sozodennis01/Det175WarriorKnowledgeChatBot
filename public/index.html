@@ -249,7 +249,7 @@
                 sendButton.disabled = false;
             })
             .catch(error => {
-                console.error('Error:', error);
+                console.error('Error client side sending message:', error);
                 sendButton.disabled = false;
             });
         }
@@ -273,7 +273,7 @@
             appendMessage('assistant', data.message);
         })
         .catch(error => {
-            console.error('Error:', error);
+            console.error('Error starting conversation client side:', error);
         });
     </script>
 </body>
