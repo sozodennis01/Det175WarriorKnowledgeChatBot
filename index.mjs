@@ -48,7 +48,6 @@ var users = 0;
 // Periodic session cleanup
 setInterval(() => {
     const now = Date.now();
-    users = 0;
     for (const [uuid, session] of sessions.entries()) {
         users++;
         if (now - session.lastActive > SESSION_TIMEOUT_MS) {
@@ -74,7 +73,8 @@ try {
         // Initialize session if it doesn't exist
         if (!sessions.has(uuid)) {
             sessions.set(uuid, { chatHistory: [], lastActive: Date.now() });
-            console.log(`Session ${uuid} created - ${users} users`);
+            users++;
+            console.log(`Session ${uuid} created - assumed ${users} users`);
         }
 
         const session = sessions.get(uuid);
