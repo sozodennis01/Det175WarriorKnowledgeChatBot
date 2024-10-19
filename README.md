@@ -1,6 +1,6 @@
 # DET175 Warrior Knowledge Quiz Chatbot
 
-![Chatbot Screenshot](https://via.placeholder.com/800x400?text=Chatbot+Screenshot)
+![Screenshot of DET175 Warrior Knowledge Quiz Chatbot](https://github.com/sozodennis01/Det175WarriorKnowledgeChatBot/blob/main/Det175WKChatbotPhoto.jpg)
 
 ## Table of Contents
 
@@ -31,9 +31,7 @@ DET175 Warrior Knowledge Quiz Chatbot is an interactive web-based chatbot design
 
 ## Demo
 
-![Chatbot Interaction](https://github.com/sozodennis01/Det175WarriorKnowledgeChatBot/blob/main/Det175WKChatbotPhoto.jpg)
-
-*Note: Replace the placeholder images with actual screenshots or GIFs of your chatbot in action.*
+![Quiz yourself on AFROTC Knowledge](https://det175warriorknowledgechatbot.onrender.com/)
 
 ## Technologies Used
 
