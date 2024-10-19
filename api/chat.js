@@ -55,6 +55,9 @@ export default async function handler(req, res) {
     { role: 'user', content: userMessage },
   ];
 
+  //see if this runs
+  console.log(messages[0].content.message)
+
   try {
     const response = await openai.createChatCompletion({
       model: 'gpt-4', // Replace with your model
