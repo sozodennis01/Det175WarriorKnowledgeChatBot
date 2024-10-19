@@ -251,7 +251,7 @@
             fetch('/api/chat', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ message: message, chatHistory: chatHistory })
+                body: JSON.stringify({ message: message, chatHistory: chatHistory, loadPrompt: false })
             })
             .then(response => response.json())
             .then(data => {

@@ -1,11 +1,10 @@
 // api/chat.js
-
-import { Configuration, OpenAIApi } from 'openai';
+import OpenAI from 'openai';
 import fs from 'fs';
 import path from 'path';
 
 // Initialize OpenAI API
-const openai = new OpenAIApi(
+const openai = new OpenAI(
     new Configuration({
         apiKey: process.env.OPENAI_DET175_DEV,
     })
