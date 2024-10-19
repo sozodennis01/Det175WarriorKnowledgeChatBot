@@ -6,32 +6,39 @@ import path from 'path';
 
 // Initialize OpenAI API
 const openai = new OpenAIApi(
-  new Configuration({
-    apiKey: process.env.OPENAI_DET175_DEV,
-  })
+    new Configuration({
+        apiKey: process.env.OPENAI_DET175_DEV,
+    })
 );
 
 // Read the text file content at build time
 const textFileContent = fs.readFileSync(
-  path.join(process.cwd(), 'public', 'DET175_CadetHandbook_F24_9OCT2024.txt'),
-  'utf8'
+    path.join(process.cwd(), 'public', 'DET175_CadetHandbook_F24_9OCT2024.txt'),
+    'utf8'
 );
 
 export default async function handler(req, res) {
-  if (req.method !== 'POST') {
-    res.status(405).json({ message: 'Method Not Allowed' });
-    return;
-  }
+    if (req.method !== 'POST') {
+        res.status(405).json({ message: 'Method Not Allowed' });
+        return;
+    }
 
-  const userMessage = req.body.message || 'Hi';
-  const chatHistory = req.body.chatHistory || [];
+    const userMessage = req.body.message;
+    const chatHistory = req.body.chatHistory;
+    const loadPrompt = req.body.loadPrompt;
 
-  // Prepare messages for OpenAI API
-  const currentTimestamp = new Date().toISOString();
-  const messages = [
-    {
-      role: 'system',
-      content: `The current date and time is ${currentTimestamp}. You are a helpful assistant that quizzes the user on the following from the DET175 Cadet Handbook Information Fall 2024 9OCT2024:
+    // Only add user's message if it's not the initial request
+    if (userMessage) {
+        chatHistory.push({ role: 'user', content: userMessage });
+    }
+
+    if (loadPrompt) {
+        // Prepare messages for OpenAI API
+        const currentTimestamp = new Date().toISOString();
+        const messages = [
+            {
+                role: 'system',
+                content: `The current date and time is ${currentTimestamp}. You are a helpful assistant that quizzes the user on the following from the DET175 Cadet Handbook Information Fall 2024 9OCT2024:
       \n\n${textFileContent}\n\n
       Start by asking a question related to the content. Questions should vary in type and difficulty.
       The goal is to test the user's knowledge from each LLAB, which corresponds to "weeks" when the user mentions them. If the user specifies a particular LLAB or week, focus the questions on that section.
@@ -50,27 +57,45 @@ export default async function handler(req, res) {
       If the user asks a question unrelated to the Cadet Handbook Information, Air Force, military, or Space Force, politely refuse to answer by responding, "I can only quiz you on topics related to the AFROTC Cadet Handbook, Air Force, military, or Space Force.
       Please ask questions relevant to these areas. Do not repeat questions.
       Start with a random question from SECTION LLAB 9, LLAB 8, LLAB 7, LLAB 6, LLAB 5, LLAB 4, LLAB 3, or LLAB 2."`,
-    },
-    ...chatHistory,
-    { role: 'user', content: userMessage },
-  ];
+            },
+            ...chatHistory,
+            { role: 'user', content: userMessage },
+        ];
 
-  //see if this runs
-  console.log(messages[0].content.message)
+        //see if this runs
+        console.log(messages[0].content.message)
 
-  try {
-    const response = await openai.createChatCompletion({
-      model: 'gpt-4', // Replace with your model
-      messages: messages,
-      temperature: 1.0,
-      max_tokens: 150,
-    });
+        try {
+            const response = await openai.createChatCompletion({
+                model: 'gpt-4', // Replace with your model
+                messages: messages,
+                temperature: 1.0,
+                max_tokens: 150,
+            });
 
-    const assistantMessage = response.data.choices[0].message.content;
+            const assistantMessage = response.data.choices[0].message.content;
 
-    res.status(200).json({ message: assistantMessage });
-  } catch (error) {
-    console.error('OpenAI API error:', error);
-    res.status(500).json({ message: 'Sorry, something went wrong with OpenAI.' });
-  }
+            res.status(200).json({ message: assistantMessage });
+        } catch (error) {
+            console.error('OpenAI API error starting conversation:', error);
+            res.status(500).json({ message: 'Sorry, something went wrong with OpenAI.' });
+        }
+    }
+    else {
+        try {
+            const response = await openai.createChatCompletion({
+                model: 'gpt-4', // Replace with your model
+                messages: messages,
+                temperature: 1.0,
+                max_tokens: 150,
+            });
+
+            const assistantMessage = response.data.choices[0].message.content;
+
+            res.status(200).json({ message: assistantMessage });
+        } catch (error) {
+            console.error('OpenAI API error sending message:', error);
+            res.status(500).json({ message: 'Sorry, something went wrong with OpenAI.' });
+        }
+    }
 }

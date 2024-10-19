@@ -260,7 +260,7 @@
                 sendButton.disabled = false;
             })
             .catch(error => {
-                console.error('Error:', error);
+                console.error('Error sending client message:', error);
                 sendButton.disabled = false;
             });
         }
@@ -273,20 +273,21 @@
             chat.scrollTop = chat.scrollHeight;
         }
 
-        // // Start the conversation
-        // fetch('/api/chat', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify({ message: '', chatHistory: chatHistory, isFirstMessage: true })
-        // })
-        // .then(response => response.json())
-        // .then(data => {
-        //     appendMessage('assistant', data.message);
-        //     chatHistory.push({ role: 'assistant', content: data.message });
-        // })
-        // .catch(error => {
-        //     console.error('Error:', error);
-        // });
+        // Start the conversation
+        fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: '', chatHistory: chatHistory, loadPrompt: true })
+        })
+        .then(response => response.json())
+        .then(data => {
+            appendMessage('assistant', data.message);
+            chatHistory.push({ role: 'assistant', content: data.message });
+        })
+        .catch(error => {
+            console.error('Error starting conversation:', error);
+        });
+
     </script>
     </script>
 </body>
