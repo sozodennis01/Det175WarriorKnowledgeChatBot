@@ -78,10 +78,6 @@ async function main() {
 
         // Call OpenAI API - note by default its 0 so lets start with 1.0.
         try {
-
-            // Add assistant's message to the conversation history
-            chatHistory.push({ role: 'assistant', content: assistantMessage });
-            
             const response = await openai.chat.completions.create({
                 model: 'gpt-4o-mini',
                 messages: messages,
