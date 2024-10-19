@@ -18,6 +18,8 @@ const openai = new OpenAI({
 });
 
 const PORT = process.env.PORT || 3000;
+// Session management
+var chatHistory = [];
 
 async function main() {
     const app = express();
@@ -33,9 +35,6 @@ async function main() {
     const textFilePath = path.join(__dirname, 'public/DET175_CadetHandbook_F24_9OCT2024.txt');
     const textFileContent = fs.readFileSync(textFilePath, 'utf8');
 
-    // Session management
-    const sessions = {};
-
     const limiter = rateLimit({
         windowMs: 1 * 60 * 1000, // 1 minute window
         max: 5, // limit each IP to 5 requests per 1 minute
@@ -43,34 +42,9 @@ async function main() {
 
     app.post('/chat', limiter, async (req, res) => {
         const userMessage = req.body.message;
-        const sessionId = req.body.sessionId;
-        const isFirstMessage = req.body.isFirstMessage;
-
-        // Initialize session if it doesn't exist
-        if (!sessions[sessionId]) {
-            sessions[sessionId] = [];
-        }
-
-        const chatHistory = sessions[sessionId];
-        // Keep only the last 10 messages
-        if (chatHistory.length > 20) {
-            chatHistory.splice(0, chatHistory.length - 20);
-        }
-
-        // If it's the first message, send a dynamic prompt to start the conversation
-        // if (isFirstMessage) {
-        //     const dynamicPrompt = `Hi, welcome to your quiz session! Let's get started. Please tell me what you'd like me to quiz you on, or I can start by asking a question from the handbook.`;
-        //     chatHistory.push({ role: 'assistant', content: dynamicPrompt });
-        //     res.json({ message: dynamicPrompt });
-        //     return;
-        // }
-
         // Only add user's message if it's not the initial request
-        if (userMessage) {
+        if (userMessage)
             chatHistory.push({ role: 'user', content: userMessage });
-            // Update lastActive timestamp
-            sessions[sessionId].lastActive = Date.now();
-        }
 
         // Prepare messages for OpenAI API
         const currentTimestamp = new Date().toISOString();
@@ -104,6 +78,10 @@ async function main() {
 
         // Call OpenAI API - note by default its 0 so lets start with 1.0.
         try {
+
+            // Add assistant's message to the conversation history
+            chatHistory.push({ role: 'assistant', content: assistantMessage });
+            
             const response = await openai.chat.completions.create({
                 model: 'gpt-4o-mini',
                 messages: messages,
@@ -128,20 +106,10 @@ async function main() {
         }
 
     });
+
     app.listen(PORT, () => {
         console.log('Chatbot is running on port ${PORT}`)');
     });
-
-    // Session cleanup function
-    setInterval(() => {
-        const now = Date.now();
-        for (const sessionId in sessions) {
-            if (now - sessions[sessionId].lastActive > 4 * 60 * 60 * 1000) { // 4 hours inactivity
-                delete sessions[sessionId];
-            }
-        }
-    }, 4 * 60 * 60 * 1000); // Cleanup every 4 hours
-
 }
 
 main();
