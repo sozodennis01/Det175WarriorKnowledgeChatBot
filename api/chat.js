@@ -66,7 +66,7 @@ export default async function handler(req, res) {
 
         try {
             const response = await openai.createChatCompletion({
-                model: 'gpt-4', // Replace with your model
+                model: 'gpt-4o-mini',
                 messages: messages,
                 temperature: 1.0,
                 max_tokens: 150,
@@ -83,7 +83,7 @@ export default async function handler(req, res) {
     else {
         try {
             const response = await openai.createChatCompletion({
-                model: 'gpt-4', // Replace with your model
+                model: 'gpt-4o-mini',
                 messages: messages,
                 temperature: 1.0,
                 max_tokens: 150,
