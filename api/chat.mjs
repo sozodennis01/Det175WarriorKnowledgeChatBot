@@ -1,10 +1,16 @@
 // api/chat.js
-const { Configuration, OpenAIApi } = require('openai');
-const fs = require('fs');
-const path = require('path');
+import { Configuration, OpenAI }  from 'openai';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+// If using ESM, __dirname is not available by default
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Initialize OpenAI API
-const openai = new OpenAIApi(
+const openai = new OpenAI(
   new Configuration({
     apiKey: process.env.OPENAI_DET175_DEV,
   })
@@ -62,7 +68,7 @@ module.exports = async (req, res) => {
         ];
 
         //see if this runs
-        console.log(messages[0].content.message)
+        console.log(messages[0].content);
 
         try {
             const response = await openai.createChatCompletion({
