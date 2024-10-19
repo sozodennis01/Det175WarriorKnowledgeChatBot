@@ -17,6 +17,8 @@ const openai = new OpenAI({
     apiKey: process.env.OPENAI_DET175_DEV,
 });
 
+const PORT = process.env.PORT || 3000;
+
 async function main() {
     const app = express();
     app.use(bodyParser.json());
@@ -127,9 +129,8 @@ async function main() {
         }
 
     });
-
-    app.listen(3000, () => {
-        console.log('Chatbot is running on http://localhost:3000');
+    app.listen(PORT, () => {
+        console.log('Chatbot is running on port ${PORT}`)');
     });
 
     // Session cleanup function

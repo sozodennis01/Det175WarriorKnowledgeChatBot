@@ -2,13 +2,15 @@
   "name": "det175warriorknowledgechatbot",
   "version": "1.0.0",
   "main": "index.mjs",
+  "engines": {
+  "node": ">=18.x"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.mjs"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
+  "author": "Dennis Sarsozo",
+  "description": "Detachment 175 Warrior Knowledge Cadet Handbook Chatbot Quiz",
   "dependencies": {
     "body-parser": "^1.20.3",
     "dotenv": "^16.4.5",
