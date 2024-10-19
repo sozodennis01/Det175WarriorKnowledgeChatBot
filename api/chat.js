@@ -1,13 +1,13 @@
 // api/chat.js
-import OpenAI from 'openai';
-import fs from 'fs';
-import path from 'path';
+const { Configuration, OpenAIApi } = require('openai');
+const fs = require('fs');
+const path = require('path');
 
 // Initialize OpenAI API
-const openai = new OpenAI(
-    new Configuration({
-        apiKey: process.env.OPENAI_DET175_DEV,
-    })
+const openai = new OpenAIApi(
+  new Configuration({
+    apiKey: process.env.OPENAI_DET175_DEV,
+  })
 );
 
 // Read the text file content at build time
@@ -16,7 +16,7 @@ const textFileContent = fs.readFileSync(
     'utf8'
 );
 
-export default async function handler(req, res) {
+module.exports = async (req, res) => {
     if (req.method !== 'POST') {
         res.status(405).json({ message: 'Method Not Allowed' });
         return;
