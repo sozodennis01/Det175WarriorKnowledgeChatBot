@@ -48,16 +48,22 @@ var users = 0;
 // Periodic session cleanup
 setInterval(() => {
     const now = Date.now();
-    for (const [uuid, session] of sessions.entries()) {
-        users++;
-        if (now - session.lastActive > SESSION_TIMEOUT_MS) {
-            sessions.delete(uuid);
-            console.log(`Session ${uuid} has been cleaned up due to inactivity.`);
-            users--;
-        }
+    console.log('Running cleanup at: ' + now.toString() + "\nNumber of users: " + users);
+    if (sessions.size() > 25) {
+        sessions.clear();
+        users = 0;
+        console.log('Wiped all sessions after cleanup: ' + users);
     }
-    console.log('Sessions after cleanup: ' + users);
-
+    else {
+        for (const [uuid, session] of sessions.entries()) {
+            if (now - session.lastActive > SESSION_TIMEOUT_MS) {
+                sessions.delete(uuid);
+                console.log(`Session ${uuid} has been cleaned up due to inactivity.`);
+                users--;
+            }
+        }
+        console.log('Sessions after cleanup: ' + users);
+    }
 }, 30 * 60 * 1000); // Run cleanup every 30 minutes
 
 // POST /chat route with rate limiting
