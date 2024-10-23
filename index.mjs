@@ -49,7 +49,7 @@ var users = 0;
 setInterval(() => {
     const now = Date.now();
     console.log('Running cleanup at: ' + now.toString() + "\nNumber of users: " + users);
-    if (sessions.size() > 25) {
+    if (sessions.size > 25) {
         sessions.clear();
         users = 0;
         console.log('Wiped all sessions after cleanup: ' + users);
