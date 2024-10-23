@@ -48,23 +48,44 @@ var users = 0;
 // Periodic session cleanup
 setInterval(() => {
     const now = Date.now();
-    console.log('Running cleanup at: ' + now.toString() + "\nNumber of users: " + users);
+
+    // Create a new Date object from the timestamp
+    const currentDate = new Date(now);
+
+    // Define the Hawaii time options for formatting
+    const options = {
+        timeZone: 'Pacific/Honolulu', // Hawaii time zone
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: false // Optional: 12-hour format
+    };
+
+    // Format the date to Hawaii time zone
+    const hawaiiTime = new Intl.DateTimeFormat('en-US', options).format(currentDate);
+
+    console.log('Running cleanup at: ' + hawaiiTime + "\nNumber of users: " + users);
     if (sessions.size > 25) {
         sessions.clear();
         users = 0;
-        console.log('Wiped all sessions after cleanup: ' + users);
+        console.log('Wiped all sessions after cleanup.');
     }
     else {
+        let deleted = 0;
         for (const [uuid, session] of sessions.entries()) {
             if (now - session.lastActive > SESSION_TIMEOUT_MS) {
                 sessions.delete(uuid);
                 console.log(`Session ${uuid} has been cleaned up due to inactivity.`);
                 users--;
+                deleted++;
             }
         }
-        console.log('Sessions after cleanup: ' + users);
+        console.log('Total sessions cleaned up: ' + deleted);
     }
-}, 30 * 60 * 1000); // Run cleanup every 30 minutes
+}, 60 * 60 * 1000); // Run cleanup every 60 minutes
 
 // POST /chat route with rate limiting
 try {
