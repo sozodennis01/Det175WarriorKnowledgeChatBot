@@ -94,7 +94,8 @@ try {
         const { uuid, message } = req.body;
 
         if (!uuid) {
-            return res.status(400).json({ message: 'UUID is required.' });
+            console.error("A client doesn't have an UUID? Assume null?");
+            return res.status(400).json({ message: 'Error: UUID is required.' });
         }
 
         // Initialize session if it doesn't exist
