@@ -70,7 +70,7 @@
             margin-bottom: 15px;
             border-radius: 8px;
             padding: 12px 16px;
-            max-width: 100%;
+            max-width: 80%;
             line-height: 1.6;
             word-wrap: break-word;
             align-self: center;
@@ -174,6 +174,21 @@
             background: #ccc;
             border-radius: 4px;
         }
+
+        .message-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        .timestamp {
+            margin-left: 8px;
+            font-size: 0.75em;
+            color: #888;
+            align-self: flex-end;
+        }
     </style>
 </head>
 
@@ -182,11 +197,11 @@
         <button id="toggle-button">Switch Mode</button>
         <div id="chat"></div>
         <div id="input-container">
-            <input type="text" id="input" placeholder="Type your answer here..." autocomplete="off" />
+            <textarea type="text" id="input" placeholder="Type your answer here..." autocomplete="off" /></textarea>
             <button id="send-button" disabled>Send</button>
         </div>
         <div>
-            <p>Maintained by C/Sarsozo. Quiz yourself on LLAB 1-10. Auto-generates a question on startup. Respond back
+            <p>Maintained by C/Sarsozo. Quiz yourself on LLAB 1-11. Auto-generates a question on startup. Respond back
                 what LLAB you want to quiz yourself on.
                 Insignias and aircraft photos cannot be tested - study those yourself. Any questions or concerns let me
                 know 🤙🏽</p>
@@ -201,17 +216,17 @@
         // Function to generate UUID (RFC4122 version 4 compliant)
         function generateUUID() { // Public Domain/MIT
             let d = new Date().getTime();//Timestamp
-            let d2 = (performance && performance.now && (performance.now()*1000)) || 0;//Time in microseconds since page-load or 0 if unsupported
-            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            let d2 = (performance && performance.now && (performance.now() * 1000)) || 0;//Time in microseconds since page-load or 0 if unsupported
+            return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
                 let r = Math.random() * 16;//random number between 0 and 16
-                if(d > 0){
-                    r = (d + r)%16 | 0;
-                    d = Math.floor(d/16);
+                if (d > 0) {
+                    r = (d + r) % 16 | 0;
+                    d = Math.floor(d / 16);
                 } else {
-                    r = (d2 + r)%16 | 0;
-                    d2 = Math.floor(d2/16);
+                    r = (d2 + r) % 16 | 0;
+                    d2 = Math.floor(d2 / 16);
                 }
-                return (c==='x' ? r : (r&0x3|0x8)).toString(16);
+                return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16);
             });
         }
 
@@ -305,13 +320,27 @@
         }
 
         function appendMessage(role, message, id = null) {
+            const messageContainer = document.createElement('div');
+            messageContainer.className = 'message-container';
+
             const messageElement = document.createElement('div');
             messageElement.className = 'message ' + role;
-            messageElement.textContent = message;
+            // Preserve new lines and add message content
+            messageElement.innerHTML = `${message.replace(/\n/g, '<br>')}`;
+
+            // Create a timestamp element
+            const timestamp = document.createElement('span');
+            timestamp.className = 'timestamp';
+            timestamp.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' });
+
+            // Append message and timestamp to the container
+            messageContainer.appendChild(messageElement);
+            messageContainer.appendChild(timestamp);
+
             if (id) {
                 messageElement.id = id; // Assign an ID if provided to remove loading mask
             }
-            chat.appendChild(messageElement);
+            chat.appendChild(messageContainer);
             chat.scrollTop = chat.scrollHeight;
         }
 
