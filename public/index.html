@@ -70,7 +70,7 @@
             margin-bottom: 15px;
             border-radius: 8px;
             padding: 12px 16px;
-            max-width: 80%;
+            max-width: 100%;
             line-height: 1.6;
             word-wrap: break-word;
             align-self: center;
@@ -188,6 +188,13 @@
             font-size: 0.75em;
             color: #888;
             align-self: flex-end;
+        }
+
+        .timestamp.hidden {
+            visibility: hidden;
+            /* Hide the timestamp text but keep space */
+            min-width: 48px;
+            /* Adjust this to match the space of a visible timestamp */
         }
     </style>
 </head>
@@ -328,14 +335,23 @@
             // Preserve new lines and add message content
             messageElement.innerHTML = `${message.replace(/\n/g, '<br>')}`;
 
-            // Create a timestamp element
-            const timestamp = document.createElement('span');
-            timestamp.className = 'timestamp';
-            timestamp.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' });
+            // if assistant, Create a timestamp element
+            if (role.match('assistant')) {
+                const timestamp = document.createElement('span');
+                timestamp.className = 'timestamp';
+                timestamp.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit', hourCycle: 'h23' });
 
-            // Append message and timestamp to the container
-            messageContainer.appendChild(messageElement);
-            messageContainer.appendChild(timestamp);
+                // Append message and timestamp to the container
+                messageContainer.appendChild(messageElement);
+                messageContainer.appendChild(timestamp);
+            }
+            else {
+                // dont show timestamp if user message
+                messageContainer.appendChild(messageElement);
+                const timestamp = document.createElement('span');
+                timestamp.className = 'timestamp hidden'; // Add a class to hide the timestamp
+                messageContainer.appendChild(timestamp);
+            }
 
             if (id) {
                 messageElement.id = id; // Assign an ID if provided to remove loading mask
