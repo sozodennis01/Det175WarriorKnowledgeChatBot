@@ -147,7 +147,7 @@ try {
         const response = await openai.chat.completions.create({
             model: 'gpt-4o-mini',
             messages: messages,
-            temperature: 1.6,
+            temperature: 0.90,
             max_completion_tokens: 200,
         });
 
