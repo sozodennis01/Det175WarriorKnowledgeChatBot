@@ -137,7 +137,7 @@ try {
             Try not to give any hints in the questions itself.
             If the user asks a question unrelated to the Cadet Handbook Information, Air Force, military, or Space Force, politely refuse to answer by responding, "I can only quiz you on topics related to the AFROTC Cadet Handbook, Air Force, military, or Space Force. 
             Please ask questions relevant to these areas. Do not repeat questions.
-            Start with a random question from SECTION LLAB 10, LLAB 9, LLAB 8, LLAB 7, LLAB 6, LLAB 5, LLAB 4, LLAB 3, or LLAB 2.`,
+            Start with a random question from SECTION LLAB 11, LLAB 10, LLAB 9, LLAB 8, LLAB 7, LLAB 6, LLAB 5, LLAB 4, LLAB 3, or LLAB 2.`,
         };
 
         // Prepare messages array
@@ -148,7 +148,7 @@ try {
             model: 'gpt-4o-mini',
             messages: messages,
             temperature: 1.6,
-            max_completion_tokens: 100,
+            max_completion_tokens: 200,
         });
 
         const assistantMessage = response.choices[0].message.content;
