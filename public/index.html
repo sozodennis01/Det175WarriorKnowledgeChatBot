@@ -45,17 +45,33 @@
         }
 
         #toggle-button {
-            padding: 8px 12px;
             position: absolute;
             top: 10px;
             right: 10px;
+            width: 40px;
+            /* Set a fixed width */
+            height: 40px;
+            /* Set a fixed height */
             background-color: var(--user-bg-light);
             color: #ffffff;
             border: none;
-            border-radius: 20px;
+            border-radius: 50%;
+            /* Make it a perfect circle */
             cursor: pointer;
             outline: none;
+            display: flex;
+            /* Center content with flex */
+            align-items: center;
+            /* Vertically center */
+            justify-content: center;
+            /* Horizontally center */
             transition: background-color 0.3s;
+            line-height: normal;
+            /* Reset line-height to avoid alignment issues */
+            text-align: center;
+            /* Center text inside the button */
+            z-index: 10;
+            /* Bring the button to the front */
         }
 
         #chat {
