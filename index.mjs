@@ -29,7 +29,7 @@ const __dirname = path.dirname(__filename);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Read the text file content
-const textFilePath = path.join(__dirname, 'public/DET175_CadetHandbook_F24_9OCT2024.txt');
+const textFilePath = path.join(__dirname, 'public/DET175_CadetHandbook_S25_16JAN2025.txt');
 const textFileContent = fs.readFileSync(textFilePath, 'utf8');
 
 // Rate limiter configuration
