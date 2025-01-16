@@ -1,5 +1,5 @@
 MAINTAINED BY C/SARSOZO C/3C FOR DETACHMENT 175
-FALL 2024 9 OCT 2024 CADET WARRIOR KNOWLEDGE HANDBOOK
+SPRING 2025 16 JAN 2025 CADET WARRIOR KNOWLEDGE HANDBOOK
 
 SECTION LLAB 1
 Detachment 175 Staff  
@@ -24,7 +24,7 @@ NCOIC, AFROTC Detachment 175
 
 Executive Assistant: Ms. Kara A. Otineru
 
-Air Force Core Values  
+Air Force Core Values: 
 Integrity First  
 Service Before Self  
 Excellence In All We Do  
@@ -36,7 +36,7 @@ Connection
 Courage  
 
 The Cadet Honor Code  
-*“We will not lie, steal, or cheat, nor tolerate among us anyone who does.”*  
+We will not lie, steal, or cheat, nor tolerate among us anyone who does.
 
 Seven Basic Responses  
 1. Yes, Sir/Ma’am.  
@@ -47,36 +47,53 @@ Seven Basic Responses
 6. Sir/Ma’am, I do not understand.  
 7. Sir/Ma’am, I do not know.  
 
-*Note: Although Sir/Ma’am is respectful, utilizing the individual’s Rank/Last name is more professional.*  
-E.g.: *“Lieutenant Colonel Anderson, may I ask a question?”*
+Note: Although Sir/Ma’am is respectful, utilizing the individual’s Rank/Last name is more professional. 
+E.g.: “Lieutenant Colonel Anderson, may I ask a question?”
+
+Basic Drill Terminology
+Distance: The space from the front to the rear between units (40 inches)
+Interval: The space between individuals placed side by side
+Dress: The alignment of individuals side by side while maintaining
+proper interval
+Cover: The alignment of individuals one behind the other with
+proper distance
+
+The Three Small Unit Tactics (SUT) Formations:
+1. File
+2. Line
+3. Wedge
 
 SECTION LLAB 2
 
-Detachment Heritage  
-THE YEAR THE DETACHMENT 175 WAS Founded: 1949  
-DETACHMENT 175 MOTTO IS: Na Koa Lani - Heavenly Warriors  
+Cadet Wing Commander: Cadet Colonel Gatchel
+Cadet Deputy Wing Commander: Cadet Colonel Moody
+Cadet Wing Inspector General: Cadet Lieutenant Colonel Silva
+A-Staff Chief: Cadet Lieutenant Colonel Willis
+Squadron Commander: Cadet Lieutenant Colonel Mabini
+A1: Cadet Major Moshir
+A4/6: Cadet Major Lin
+A5/3: Cadet Major Dyer
+Basic Cadet Oscar Flight Commander: Cadet Captain Winslow
+Basic Cadet Kilo Flight Commander: Cadet Captain Yoon
+Basic Cadet Leader Alpha Flight Commander: Cadet Major Stinson
+Location Logistics: Cadet Second Lieutenant Diaz
+Production Superintendent: Cadet Captain Garcia
+Foreign Liaison Officer (FLO?) Procurement: Cadet Second Lieutenant Macaraeg
+Current Ops Officers: Cadet Second Lieutenant Sardillo and Cadet Second Lieutenant Benavente
+Future Ops Officers: Cadet Second Lieutenant Sellinger and Cadet Second Lieutenant Taisacan
 
-Detachment 175 Memorial  
+Quote of the week: “Servant leadership...It’s the notion of being part of something bigger than yourself and
+of making the people around you better. In our daily struggles to advance within an
+organization, we sometimes forget that it’s actually more about...the people that are
+around us.” - General Lori J. Robertson, USAF
 
-Second Lieutenant Wah Kau Kong: The first Chinese-American Fighter Pilot  
-
-Date of Birth: 17 January 1919  
-Date of Passing: 22 February 1944  
-
-Education: University of Hawaii at Manoa  
-
-Branch of Service: United States Army Air Forces (USAAF)  
-
-Piloted Aircraft: P-51B Mustang
-
-TODO Detachment Organization chart - hard to convert to text so I'll skip 18 OCT 2024.
 Aircraft: F-15 Eagle and F-16 Fighting Falcon
 
 SECTION LLAB 3
 
 AFROTC Chain of Command  
 
-President of the United States: President Joseph R. Biden, Jr.  
+President of the United States: President Donald J. Trump 
 
 Secretary of Defense: The Honorable Lloyd J. Austin III  
 
@@ -100,40 +117,48 @@ Southwest Region/CC: Colonel John Grimm
 
 Det 175/CC: Lieutenant Colonel Timothy D. Anderson  
 
-Aircraft: [F-22 Raptor](#) and [F-35A Lightning II](#)
+Aircraft: F-22 Raptor and F-35A Lightning II
+
+Troop Leading Procedures
+Overview
+1. Receive the mission
+2. Issue a warning order
+3. Make a tentative plan
+4. Initiate movement
+5. Conduct reconnaissance
+6. Complete the plan
+7. Issue the operation order
+8. Supervise, refine, and rehearse
+Types of Orders
+Operations Order (OPORD): A long-term mission plan to complete objectives for a specific Area of Operations
+Fragmentary Order (FRAGO): Amends a previous OPORD without changing it completely
+Warning Order (WARNO): A warning to subordinate troops of an impending mission, and instructions to prepare. It provides specific tasks to be accomplish by subordinates prior to stepping off
 
 SECTION LLAB 4  
 
 Cadet Wing Staff  
 
-Cadet Wing Commander: Cadet Colonel Hannah G. Dyer  
+Cadet Wing Commander: Cadet Colonel Shawn G. Gatchell
+Cadet Wing Deputy Commander: Cadet Colonel Kobie J. Moody
+Cadet Wing Inspector General: Cadet Lieutenant Colonel Malia K. Silva
+A-Staff Chief: Cadet Lieutenant Colonel Jerry L. Willis
+Director of A1: Cadet Major Alexander Moshir
+Director of A3/5: Cadet Major Hannah G. Dyer
+Director of A4/6: Cadet Major Andrew Lin
 
-Cadet Wing Deputy Commander: Cadet Colonel Noah E. Stinson  
-
-Cadet Wing Inspector General: Cadet Lieutenant Colonel Keoni I. Mabini  
-
-A-Staff Chief: Cadet Lieutenant Colonel Andrew Lin  
-
-Director of A1: Cadet Lieutenant Colonel Malia K. Silva  
-
-Director of A3: Cadet Lieutenant Colonel Kobie J. Moody  
-
-Director of A4/6: Cadet Lieutenant Colonel Alexander Moshir  
-
-Director of A5: Cadet Lieutenant Colonel Shawn G. Gatchell  
-
-Cadet Rank Structure  TODO idk how to properly quiz this through a chatbot?
-
-| Soft Rank       | Hard Rank       | Rank (Abbreviation)      |  
-|-----------------|-----------------|-------------------------|  
-|                 |                 | Cadet Colonel (C/Col)    |  
-|                 |                 | Cadet Lieutenant Colonel (C/Lt Col) |  
-|                 |                 | Cadet Major (C/Maj)      |  
-|                 |                 | Cadet Captain (C/Capt)   |  
-|                 |                 | Cadet First Lieutenant (C/1st Lt) |  
-|                 |                 | Cadet Second Lieutenant (C/2d Lt) |  
-|                 |                 | Cadet Third Class (C/3C) |  
-|                 |                 | Cadet Fourth Class (C/4C) |  
+Cadet Rank Structure
+POC CADETS BELOW:
+Rank (Abbreviation)
+Cadet Colonel (C/Col)
+Cadet Lieutenant Colonel (C/Lt Col)
+Cadet Major (C/Maj)
+Cadet Captain (C/Capt) 
+Cadet First Lieutenant (C/1st Lt)  
+Cadet Second Lieutenant (C/2d Lt)
+AS200/250 BELOW:
+Cadet Third Class (C/3C)
+AS100 BELOW:
+Cadet Fourth Class (C/4C)
 
 Below are visual descriptions of the AFROTC cadet ranks in a text format to help visualize the rank insignias:
 
@@ -171,7 +196,35 @@ Below are visual descriptions of the AFROTC cadet ranks in a text format to help
 
 These descriptions aim to help you visualize the number, thickness, and arrangement of stripes or bars associated with each AFROTC cadet rank.
 
-Aircraft: [A-10C Thunderbolt II](#) and [B-1B Lancer](#)
+Aircraft: A-10C Thunderbolt II and B-1B Lancer
+
+NATO Phonetic Alphabet is as follows:
+A - Alpha
+B - Bravo
+C - Charlie
+D - Delta
+E - Echo
+F - Foxtrot
+G - Golf
+H - Hotel
+I - India
+J - Juliett
+K - Kilo
+L - Lima
+M - Mike
+N - November
+O - Oscar
+P - Papa
+Q - Quebec
+R - Romeo
+S - Sierra
+T - Tango
+U - Uniform
+V - Victor
+W - Whiskey
+X - Xray
+Y - Yankee
+Z - Zulu
 
 SECTION LLAB 5  
 
@@ -179,10 +232,10 @@ Air Force Vision
 The World’s Greatest Air Force - Powered by Airmen, Fueled by Innovation.  
 
 Air Force Mission  
-To Fly, Fight, and Win … Airpower Anytime, Anywhere.  
+To Fly, Fight, and Win... Airpower Anytime, Anywhere.  
 
 Air Force Motto  
-Aim High … Fly-Fight-Win  
+Aim High... Fly-Fight-Win  
 
 Air Force Birthday  
 18 September 1947  
@@ -210,8 +263,6 @@ Space Force Core Missions
 - Space Superiority  
 - Global Mission Operations  
 - Assured Space Access  
-
-Aircraft: [B-2 Spirit](#) and [B-52H Stratofortress](#)
 
 SECTION LLAB 6
 Officer Rank Insignia of the United States Armed Forces
@@ -362,6 +413,8 @@ Note: The grade of Warrant Officer (WO) is no longer in use in the Navy.
 - Chief Warrant Officer 4 (CWO4): One silver stripe with one blue break  
 
 Note: The grade of Warrant Officer (WO) and Chief Warrant Officer 5 (CWO5) is no longer in use in the Coast Guard.
+
+Aircraft: B-2 Spirit and B-52H Stratofortress
 
 SECTION LLAB 7
 Enlisted Rank Insignia of the United States Armed Forces
@@ -590,6 +643,25 @@ The enlisted rank insignia for the United States Space Force from E-1 to E-9, in
 
 The Space Force's enlisted rank structure uses a clean, futuristic design with chevrons and symbols that emphasize its connection to space operations. The ranks are unique to the Space Force but are inspired by the Air Force's rank structure.
 
+5 Cs (Used for securing UXOs and IEDs) BELOW:
+1. Confirm
+   1a. Confirm suspected UXO/IED
+2. Clear
+   2a. All personnel should be cleared from the area to a tactically safe position
+3. Cordon
+   3a. Cordon the area to prevent unauthorized personnel and vehicles from entering the
+site in order to preserve the scene for further exploitation and to provide outward
+protection and security against command-initiated IEDs
+4. Check
+   4a. Check the immediate area around the site and cordoned positions for secondary
+devices
+5. Control
+   5a. Control the area inside the cordon to ensure only authorized personnel have
+access (emergency services [medical, firefighting or EOD]) should be allowed to
+enter the cordon and enter and exit through the ECP. All civilian and non-essential
+military traffic should be diverted away from the cordon. If possible, maintain
+observation of the IED
+
 SECTION LLAB 8  
 
 The Armed Forces Code of Conduct  
@@ -612,7 +684,7 @@ When questioned, should I become a prisoner of war, I am required to give name, 
 Article VI  
 I will never forget that I am an American, fighting for freedom, responsible for my actions, and dedicated to the principles which made my country free. I will trust in my God and in the United States of America.  
 
-Aircraft: [E-3 Sentry](#) and [KC-46A Pegasus](#)
+Aircraft: E-3 Sentry and KC-46A Pegasus
 
 SECTION LLAB 9
 
@@ -641,13 +713,23 @@ I am an American Airman.
 Wingman, Leader, Warrior.  
 I will never leave an Airman behind,  
 I will never falter,  
-And I will not fail.  
+And I will not fail. 
 
-Aircraft: [KC-135 Stratotanker](#) and [C-5 Galaxy](#)
+SALUTE Report
+Size, Activity, Location, Uniform/unit, Time, Equipment.
+Example below
+Size – Seven enemy personne
+Activity – Traveling SW
+Location – GA123456
+Uniform/unit – OD uniforms with red six-point star on left shoulder
+Time – 210200 JAN10
+Equipment – Carry one machine gun and one rocket launcher
+
+Aircraft: KC-135 Stratotanker and C-5 Galaxy
 
 SECTION LLAB 10  
 
-The [Air Force Song](#)  
+The Air Force Song
 
 Off we go into the wild blue yonder,  
 Climbing high into the sun;  
@@ -694,43 +776,50 @@ Boldly reaching into space,
 There’s no limit to our sky.
 Standing guard both night and day,
 We’re the Space Force from on high.
+
 Aircraft: C-17 Globemaster III and C-130 Hercules
 
 SECTION LLAB 11
 United States Air Force (USAF) Major Commands
-Air Combat Command (ACC)
-Joint Base Langley-Eustis, Virginia
-Air Education and Training Command (AETC)
-Joint Base San Antonio-Randolph, Texas
-Air Force Global Strike Command (AFGSC)
-Barksdale Air Force Base, Louisiana
-Air Force Materiel Command (AFMC)
-Wright-Patterson Air Force Base, Ohio
-Air Force Reserve Command (AFRC)
-Robins Air Force Base, Georgia
-Air Force Special Operations Command (AFSOC)
-Hurlburt Field, Florida
-Air Mobility Command (AMC)
-Scott Air Force Base, Illinois
-Pacific Air Forces (PACAF)
-Joint Base Pearl Harbor-Hickam, Hawaii
-United States Air Forces in Europe – Air Forces Africa (USAFE-AFAFRICA)
-Ramstein Air Base, Germany
+
+Air Combat Command (ACC) - Joint Base Langley-Eustis, Virginia
+Air Education and Training Command (AETC) - Joint Base San Antonio-Randolph, Texas
+Air Force Global Strike Command (AFGSC) - Barksdale Air Force Base, Louisiana
+Air Force Materiel Command (AFMC) - Wright-Patterson Air Force Base, Ohio
+Air Force Reserve Command (AFRC) - Robins Air Force Base, Georgia
+Air Force Special Operations Command (AFSOC) - Hurlburt Field, Florida
+Air Mobility Command (AMC) - Scott Air Force Base, Illinois
+Pacific Air Forces (PACAF) - Joint Base Pearl Harbor-Hickam, Hawaii
+United States Air Forces in Europe – Air Forces Africa (USAFE-AFAFRICA) - Ramstein Air Base, Germany
+
 United States Space Force (USSF) Field Commands
-Space Operations Command (SPOC)
-Peterson Space Force Base, Colorado
-Space Training and Readiness Command (STARCOM)
-Peterson Space Force Base, Colorado
-Space Systems Command (SSC)
-Los Angeles Air Force Base, California
+
+Space Operations Command (SPOC) - Peterson Space Force Base, Colorado
+Space Training and Readiness Command (STARCOM) - Peterson Space Force Base, Colorado
+Space Systems Command (SSC) - Los Angeles Air Force Base, California
+
+LACE Report - Used to report on supplies and necessary equipment
+Liquid – How much water
+Ammo – How much ammo
+Casualty – Any friendly casualties
+Equipment – Functional or damaged equipment
+
+Quote of the Week
+“If it’s endurable, then endure it. Stop complaining...you can endure anything your mind
+can make endurable.”
+- Marcus Aurelius
+
 Aircraft: MQ-9 Reaper and RQ-4 Global Hawk
+
 SECTION LLAB 12
+
 Oath of Enlistment (Enlisted)
 “I, (state your full name), do solemnly swear (or affirm) that I will support and defend the
 Constitution of the United States against all enemies, foreign and domestic; that I will bear true
 faith and allegiance to the same; and that I will obey the orders of the President of the United
 States and the orders of the officers appointed over me, according to regulations and the Uniform
 Code of Military Justice. So help me God (optional).”
+
 Oath of Office (Officer)
 “I, (state your full name), having been appointed a (rank) in the United States (branch of
 service), do solemnly swear (or affirm) that I will support and defend the Constitution of the
@@ -739,39 +828,38 @@ to the same; that I take this obligation freely, without any mental reservation 
 evasion; and that I will well and faithfully discharge the duties of the office upon which I am
 about to enter. So help me God (optional).”
 
-U.S. Air Force Aircrafts
+Aircraft: MQ-9 Reaper and RQ-4 Global Hawk
+
+END OF LLAB SECTIONS
+
+SECTION U.S. Air Force Aircrafts 
 F-15 Eagle
 Role: Air superiority fighter
+F-16 Fighting Falcon
+Role: Multirole fighter and air superiority fighter
 F-22 Raptor
 Role: Stealth air superiority fighter
-F-16 Fighting Falcon
-Role: Multirole fighter, air superiority
-fighter
 F-35A Lightning II
 Role: Multirole fighter
 A-10C Thunderbolt II
 Role: Close air support attack aircraft
-Bomber Aircraft
-B-1B Lancer
-Role: Supersonic strategic heavy bomber
 B-2 Spirit
 Role: Stealth strategic heavy bomber
 B-52H Stratofortress
 Role: Strategic bomber
-Tanker Aircraft
+E-3 Sentry
+Role: Airborne early warning & control
 KC-46A Pegasus
 Role: Aerial refueling and transport aircraft
 KC-135 Stratotanker
 Role: Aerial refueling and transport aircraft
-Transport Aircraft
 C-5 Galaxy
 Role: Strategic airlifter
 C-17 Globemaster III
 Role: Strategic and tactical airlifter
 C-130 Hercules
 Role: Military transport aircraft
-UA V Aircraft
-RQ-4 Global Hawk
-Role: Unmanned surveillance & recon
 MQ-9 Reaper
 Role: Unmanned combat aerial vehicle
+RQ-4 Global Hawk
+Role: Unmanned surveillance & recon
