@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>AFROTC Audio Quiz (Realtime)</title>
+</head>
+
+<body>
+    <h1>AFROTC Audio Quiz</h1>
+
+    <!-- Start/Stop Buttons -->
+    <button id="startQuiz">Start Quiz</button>
+    <button id="stopQuiz" disabled>Stop Quiz</button>
+
+    <p id="status"></p>
+
+    <script>
+        const startBtn = document.getElementById('startQuiz');
+        const stopBtn = document.getElementById('stopQuiz');
+        const statusEl = document.getElementById('status');
+
+        let pc, dc;
+
+        // START QUIZ
+        startBtn.addEventListener('click', async () => {
+            try {
+                startBtn.disabled = true;
+                stopBtn.disabled = false;
+                statusEl.textContent = "Requesting ephemeral key...";
+
+                // 1. Fetch ephemeral session
+                const resp = await fetch('/session');
+                if (!resp.ok) throw new Error('Failed to get ephemeral key');
+                const { ephemeral, systemMessage } = await resp.json();
+                const EPHEMERAL_KEY = ephemeral.client_secret.value;
+
+                statusEl.textContent = "Got ephemeral key. Creating RTCPeerConnection...";
+
+                // 2. Create Peer Connection
+                pc = new RTCPeerConnection();
+
+                // 2a. Play model's voice from remote track
+                const audioEl = document.createElement('audio');
+                audioEl.autoplay = true;
+                document.body.appendChild(audioEl);
+                pc.ontrack = (event) => {
+                    console.log('Remote track received from model (audio).');
+                    audioEl.srcObject = event.streams[0];
+                };
+
+                // 2b. Add local mic track
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                for (const track of stream.getTracks()) {
+                    pc.addTrack(track, stream);
+                }
+
+                // 2c. Create data channel for sending/receiving events
+                dc = pc.createDataChannel('oai-events');
+                dc.onmessage = (e) => {
+                    const eventData = JSON.parse(e.data);
+                    console.log("Realtime event:", eventData);
+                    // handle transcripts, etc.
+
+                    if (eventData.type === 'response.output_item.added') {
+                        // Usually the "assistant" text is inside eventData.item.content
+                        // or eventData.item if it's a conversation item
+                        console.log("Assistant said:", eventData.item.content);
+                        // Display it in the UI...
+                    }
+                    else if (eventData.type === 'conversation.item.created') {
+                        // Usually the "assistant" text is inside eventData.item.content
+                        // or eventData.item if it's a conversation item
+                        console.log("Assistant said:", eventData);
+                        // Display it in the UI...
+                    }
+                    else if (eventData.type === 'input_audio_buffer.committed') {
+                        console.log("USER DONE TALKING - SENT RESPONSE TO OPENAI", eventData);
+                    }
+                    else if (
+                        eventData.type === 'response.done' &&
+                        eventData.response?.status === 'failed' &&
+                        eventData.response?.status_details?.error?.code === 'rate_limit_exceeded'
+                    ) {
+                        // Gracefully alert the user
+                        console.log(eventData.response?.status_details?.error.message)
+                        console.error("We hit the rate limit for real-time usage. No further responses will be processed.");
+                        alert("Rate limit reached for gpt-4o-mini-realtime. Please try again later or reduce usage.");
+                    }
+
+                };
+
+                // 3. Generate an offer
+                const offer = await pc.createOffer();
+                await pc.setLocalDescription(offer);
+
+                // 4. POST the offer to Realtime
+                const baseUrl = "https://api.openai.com/v1/realtime";
+                const model = "gpt-4o-mini-realtime-preview";
+                const sdpResponse = await fetch(`${baseUrl}?model=${model}`, {
+                    method: "POST",
+                    body: offer.sdp,
+                    headers: {
+                        Authorization: `Bearer ${EPHEMERAL_KEY}`,
+                        "Content-Type": "application/sdp"
+                    }
+                });
+
+                // 5. Apply the answer
+                const answerSdp = await sdpResponse.text();
+                await pc.setRemoteDescription({ type: "answer", sdp: answerSdp });
+
+                // 6. Wait until data channel is open, then send instructions
+                dc.onopen = () => {
+                    console.log("Data channel open. Sending session.update.");
+                    statusEl.textContent = "Connected! Speak into your mic for AFROTC quiz.";
+
+                    const sessionUpdateEvent = {
+                        type: "session.update",
+                        session: {
+                            instructions: systemMessage,
+                            modalities: ["text", "audio"],
+                            "turn_detection": {
+                                "type": "server_vad",
+                                "threshold": 0.5,
+                                "prefix_padding_ms": 300,
+                                "silence_duration_ms": 1000,
+                                "create_response": true
+                            },
+                        }
+                    };
+                    dc.send(JSON.stringify(sessionUpdateEvent));
+                };
+
+            } catch (err) {
+                console.error("Error in startQuiz:", err);
+                statusEl.textContent = "Error: " + err.message;
+                startBtn.disabled = false;
+                stopBtn.disabled = true;
+            }
+        });
+
+        // STOP QUIZ
+        stopBtn.addEventListener('click', () => {
+            if (dc) {
+                // Optionally, tell the server or model we’re done
+                dc.send(JSON.stringify({
+                    type: "session.update",
+                    session: { ended: true }
+                }));
+                dc.close();
+                dc = null;
+            }
+
+            if (pc) {
+                pc.close();
+                pc = null;
+            }
+
+            statusEl.textContent = "Session stopped.";
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+            console.log("Quiz session ended.");
+        });
+    </script>
+</body>
+
+</html>

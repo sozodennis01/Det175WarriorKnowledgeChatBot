@@ -237,12 +237,18 @@
                 Rank insignias and aircraft photos cannot be tested - study those yourself. Any questions or concerns let me
                 know 🤙🏽</p>
         </div>
+        <button id="audio-quiz-button">Audio Quiz</button>
     </div>
+
     <script>
         const input = document.getElementById('input');
         const chat = document.getElementById('chat');
         const sendButton = document.getElementById('send-button');
         const toggleButton = document.getElementById('toggle-button');
+
+        document.getElementById('audio-quiz-button').addEventListener('click', () => {
+            window.location.href = '/audioQuiz.html';
+        });
 
         // Function to generate UUID (RFC4122 version 4 compliant)
         function generateUUID() { // Public Domain/MIT
