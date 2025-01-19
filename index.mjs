@@ -149,6 +149,7 @@ try {
             messages: messages,
             temperature: 0.90,
             max_completion_tokens: 200,
+            store: true
         });
 
         const assistantMessage = response.choices[0].message.content;
